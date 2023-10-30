@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+          h1 {
+            text-align: center;
+            text-decoration: dashed;
+            text-decoration: double;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: aqua;
+        }
+
+        section {
+            width: 350px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid black;
+        }
+
+        .screen {
+            width: calc(100% - 40px);
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+        .btn {
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            font-size: 24px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-equal {
+            background-color:gainsboro;
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            font-size: 24px;
+        }
+
+        .btn-clear {
+            background-color:gainsboro;
+            width: 322px;
+            height: 70px;
+            margin: 5px;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color:black;
+            
+        }
+
+        .btn-equal:hover{
+            background-color: #d32f2f;
+        }
+        .btn-clear:hover {
+            background-color: blue;
+        }
+        .btn-rtr {
+            background-color:gainsboro;
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            font-size: 24px;
+        }
+        .btn-rtr:hover{
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h1>Simple Calculator</h1>
+    <form>
+        <input type="text" class="screen"/>
+    </form><br><br>
+    <button class="btn" data-num="0">0</button>
+    <button class="btn" data-num="1">1</button>
+    <button class="btn" data-num="2">2</button>
+    <button class="btn" data-num="3">3</button>
+    <button class="btn" data-num="4">4</button>
+    <button class="btn" data-num="5">5</button>
+    <button class="btn" data-num="6">6</button>
+    <button class="btn" data-num="7">7</button>
+    <button class="btn" data-num="8">8</button>
+    <button class="btn" data-num="9">9</button>
+    <button class="btn" data-num="*">*</button>
+    <button class="btn" data-num="+">+</button>
+    <button class="btn" data-num="-">-</button>
+    <button class="btn" data-num="/">/</button>
+    <button class="btn-equal">=</button>
+    <button class="btn-rtr"><-></button>
+    <button class="btn-clear">clear</button>
+    
+</section>
+
+<script>
+    (function(){
+        let screen = document.querySelector(".screen");
+        let buttons = document.querySelectorAll(".btn");
+        let equal = document.querySelector(".btn-equal");
+        let clear = document.querySelector(".btn-clear");
+        let return2 = document.querySelector(".btn-rtr");
+        let result;
+        buttons.forEach(function(button){
+            button.addEventListener('click',function(e){
+                let store = e.target.dataset.num;
+                console.log(store)
+                screen.value += store;
+
+            }) 
+        })
+      
+        equal.addEventListener('click',function(e){
+            if (screen.value === ""){
+                screen.value = "please enter a value"
+            } else { result = eval(screen.value);
+                screen.value = result;
+            }
+        })
+        return2.addEventListener('click',function(e){
+                screen.value += result;
+        })
+        clear.addEventListener('click', function(e){
+            screen.value = "";
+        })
+    })();
+    
+
+   </script>
+</body>
+</html>
